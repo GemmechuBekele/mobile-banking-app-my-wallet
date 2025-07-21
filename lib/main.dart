@@ -1,79 +1,44 @@
-import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:my_pocket_wallet/firebase_options.dart';
+// Importing necessary packages and files.
+import 'package:firebase_core/firebase_core.dart'; // Firebase core package for initializing Firebase.
+import 'package:flutter/material.dart'; // Flutter's material design package for UI components.
 import 'package:my_pocket_wallet/classes/homecontent.dart';
+import 'package:my_pocket_wallet/firebase_options.dart';
 import 'package:my_pocket_wallet/screens/splashscreen.dart';
 
+// The main function is the entry point of the Flutter application.
 void main() async {
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  //Initialize Firebase before running the app.
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions
+        .currentPlatform, // Use the default Firebase options for the current platform.
+  );
+  // Run the app by calling the MyPocketWallet widget.
   runApp(const MyPocketWallet());
 }
 
+// Root widget for the app.
 class MyPocketWallet extends StatelessWidget {
-  const MyPocketWallet({super.key});
+  const MyPocketWallet(
+      {super.key}); // Constructor for the MyPocketWallet widget.
 
   @override
   Widget build(BuildContext context) {
+    // The build method describes the part of the user interface represented by this widget.
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'My Pocket Wallet',
+      debugShowCheckedModeBanner:
+          false, // Hides the debug banner in the top-right corner.
+      title: 'My Pocket Wallet', // Title of the app.
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      initialRoute: '/',
+          primarySwatch: Colors.blue), // Define the default theme for the app.
+      initialRoute: '/', // The initial route when the app starts.
       routes: {
-        '/': (context) => const Splashscreen(),
-        '/home': (context) => const Homecontent(),
-        '/counter': (context) => const MyHomePage(title: 'Flutter Counter Page'),
+        // Define the routes for the app.
+        '/': (context) =>
+            const Splashscreen(), // The root route, which shows the splash screen.
+        '/home': (context) =>
+            const Homecontent(), // The home route, which shows the home content.
+        // Add more routes as needed
       },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }

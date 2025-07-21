@@ -1,13 +1,14 @@
 // Importing necessary packages and files.
 import 'package:flutter/material.dart'; // Flutter's material design package for UI components.
-import 'package:my_pocket_wallet/classes/homecontent.dart';
+import 'package:my_pocket_wallet/screens/pages/register.dart';
 
 // Splashscreen widget represents the splash screen of the app.
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
 
   @override
-  _SplashscreenState createState() => _SplashscreenState(); // Creates the state for the Splashscreen widget.
+  _SplashscreenState createState() =>
+      _SplashscreenState(); // Creates the state for the Splashscreen widget.
 }
 
 // State class for the Splashscreen widget.
@@ -16,9 +17,11 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blue.shade900, // Background color matching the app theme.
+        backgroundColor:
+            Colors.blue.shade900, // Background color matching the app theme.
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Centers the content vertically.
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Centers the content vertically.
           children: [
             _topImageSection(), // Displays the top image section.
             const SizedBox(height: 24), // Spacing between sections.
@@ -77,20 +80,25 @@ Widget _splashButton(BuildContext context) {
     style: ElevatedButton.styleFrom(
       backgroundColor: Colors.orangeAccent, // Button background color.
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30), // Rounded corners for the button.
+        borderRadius:
+            BorderRadius.circular(30), // Rounded corners for the button.
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12), // Button padding.
+      padding: const EdgeInsets.symmetric(
+          horizontal: 32, vertical: 12), // Button padding.
     ),
     onPressed: () {
       // Action to perform when the button is pressed.
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Homecontent()), // Navigates to the DashboardPage.
+        MaterialPageRoute(
+            builder: (context) =>
+                const SignUpPage()), // Navigates to the Register page.
       );
     },
     child: const Text(
       "Get Started", // Button text.
-      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Button text style.
+      style: TextStyle(
+          fontSize: 18, fontWeight: FontWeight.bold), // Button text style.
     ),
   );
 }
